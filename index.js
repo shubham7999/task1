@@ -62,3 +62,27 @@ app.get('/', function (req, res) {
      
  })
 
+
+  //===================================================================================================================================
+ // Getting a chatlog of a particular user by id
+ app.get('/chatlog/getchat/:id' , async (req , res)=>{
+      
+
+    if(!req.params.id) res.send(400 , "Send the correct user Id !!");
+
+    try{
+
+   const chats =  await Chat.find({username : req.params.id}, null , {limit : 10}).sort({updatedAt:-1 });
+   console.log(chats);
+   res.json(200 , chats);
+
+
+}catch(e){
+   
+    console.error("this is error=>", e.message)
+    res.send(500 , 'Server error');
+}
+     
+})
+
+
