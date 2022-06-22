@@ -37,9 +37,8 @@ app.get('/', function (req, res) {
  app.post('/chatlog/addchat/:id' , async (req , res)=>{
       
     console.log(req.body);
-
     if (!req.body.message) return res.send(400, "Invalid message please write some message");
-    if (!req.body.isSent && isSent != "True" && isSent != "False")  return res.send(400, "Invalid isSent value");
+    if (!req.body.isSent || (req.body.isSent != "True" && req.body.isSent != "False"))  return res.send(400, "Invalid isSent value");
 
 
     try{
@@ -123,7 +122,7 @@ app.delete('/chatlog/delete/:userid/:messageid' , async (req , res)=>{
 
     try{
     
-    const isthere = await Chat.findById(req.params.id);
+    const isthere = await Chat.findById(req.params.messageid);
     if(!isthere){
 
          console.log(isthere);
