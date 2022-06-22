@@ -144,3 +144,7 @@ app.delete('/chatlog/delete/:userid/:messageid' , async (req , res)=>{
 
 
 
+app.listen(port , (req , res)=>{
+
+    console.log("Listning at port" , port);
+ })
