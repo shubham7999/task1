@@ -2,7 +2,7 @@ const  express = require('express');
 const  app = express();
 const bodyParser = require('body-parser');
 const port = 8000;
-const Chat = require("./models/user");
+const Chat = require("./models/chat");
 //database part
 const mongoose = require('mongoose');
 
