@@ -111,3 +111,36 @@ app.delete('/chatlog/delete/:id' , async (req , res)=>{
 })
 
 
+
+// Delete particular chat of a particular user
+//===========================================================================================================================================
+app.delete('/chatlog/delete/:userid/:messageid' , async (req , res)=>{
+      
+
+    if(!req.params.userid)    res.send(400 , "Send the correct user id !!");
+    if(!req.params.messageid) res.send(400 , "Send the correct message id !!");
+
+
+    try{
+    
+    const isthere = await Chat.findById(req.params.id);
+    if(!isthere){
+
+         console.log(isthere);
+         return res.send(400 , `Please enter correct id of message!!`);
+    }
+
+    await Chat.findByIdAndDelete(req.params.messageid);
+    res.send(200 , `Message deleted successfully of user ${req.params.userid}`);
+
+
+}catch(e){
+   
+    console.error("this is error=>", e.message)
+    res.send(500 , 'Server error');
+}
+     
+})
+
+
+
