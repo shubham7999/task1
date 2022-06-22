@@ -18,4 +18,16 @@ db.once('open', function(){
     console.log('Connected to Database :: MongoDB');
 });
 
+// Server path
+
+//Body parser
+app.use(bodyParser.urlencoded({ extended: false }));
+app.use(bodyParser.json())
+
+
+// Home url
+app.get('/', function (req, res) {
+
+    return res.send("Hello !!");
+ })
 
