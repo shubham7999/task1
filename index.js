@@ -7,7 +7,7 @@ const Chat = require("./models/user");
 const mongoose = require('mongoose');
 
 // Make a database of name newTask
-mongoose.connect('mongodb://localhost/newTask');
+mongoose.connect('mongodb://localhost/Task1');
 
 const db = mongoose.connection;
 
