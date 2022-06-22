@@ -86,3 +86,28 @@ app.get('/', function (req, res) {
 })
 
 
+
+//===========================================================================================================================================
+
+// deleting all the chatlogs of a given user
+app.delete('/chatlog/delete/:id' , async (req , res)=>{
+      
+
+    if(!req.params.id) res.send(400 , "Send the correct user Id !!");
+
+    try{
+    
+    console.log(req.params.id);
+    await Chat.deleteMany({username : req.params.id});
+    res.json(200 , `Chatlog deleted successfully of user ${req.params.id}`);
+
+
+}catch(e){
+   
+    console.error("this is error=>", e.message)
+    res.send(500 , 'Server error');
+}
+     
+})
+
+
